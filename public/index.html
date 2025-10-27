@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Rebrandly Click Checker</title>
+  </head>
+  <body>
+    <h2>🔗 Rebrandly Click Checker</h2>
+    <input id="url" placeholder="https://rebrand.ly/your-link" />
+    <button onclick="check()">Check Traffic</button>
+    <pre id="result"></pre>
+
+    <script>
+      async function check() {
+        const shortUrl = document.getElementById("url").value;
+        document.getElementById("result").textContent = "Loading...";
+        const res = await fetch("/api/traffic", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ shortUrl }),
+        });
+        const data = await res.json();
+        document.getElementById("result").textContent = JSON.stringify(
+          data,
+          null,
+          2
+        );
+      }
+    </script>
+  </body>
+</html>
