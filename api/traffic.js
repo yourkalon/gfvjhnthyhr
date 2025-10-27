@@ -19,7 +19,7 @@ app.post("/api/traffic", async (req, res) => {
       `https://api.rebrandly.com/v1/links?domain.fullName=${domain}&slashtag=${slashtag}`,
       {
         headers: {
-          apikey: process.env.60f1cd2c4e18415d8d0792bf54f20ca2,
+          apikey: process.env.REBRANDLY_API_KEY,
           "Content-Type": "application/json",
         },
       }
